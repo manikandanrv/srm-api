@@ -53,6 +53,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def init_db() -> None:
     """Initialize database tables."""
+    print('Datrabase URL:', settings.database_url)  # Debugging line
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
