@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     debug: bool = False
     api_v1_prefix: str = "/api/v1"
+    app_timezone: str = "Asia/Kolkata"  # India Standard Time (GMT+5:30)
 
     # Database
     database_url: str = "postgresql+asyncpg://postgres:admin@localhost:5432/srm_maintenance"

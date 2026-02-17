@@ -168,10 +168,10 @@ class TaskService:
         if not task:
             return None
 
-        from datetime import datetime, timezone
+        from app.core.utils.timezone import get_utc_now
 
         task.status = TaskStatus.IN_PROGRESS.value
-        task.started_at = datetime.now(timezone.utc)
+        task.started_at = get_utc_now()  # Store in UTC, displayed as IST in frontend
 
         await self.db.flush()
         await self.db.refresh(task)
@@ -194,10 +194,10 @@ class TaskService:
         if not task:
             return None
 
-        from datetime import datetime, timezone
+        from app.core.utils.timezone import get_utc_now
 
         task.status = TaskStatus.COMPLETED.value
-        task.completed_at = datetime.now(timezone.utc)
+        task.completed_at = get_utc_now()  # Store in UTC, displayed as IST in frontend
         if feedback:
             task.feedback = feedback
         if rating:
